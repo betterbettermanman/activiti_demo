@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/testm1510735932336" id="m1510735932336" name="">
+  <process id="leave" isExecutable="true" isClosed="false" processType="None">
+    <startEvent id="_2" name="StartEvent"></startEvent>
+	<sequenceFlow id="_9" sourceRef="_2" targetRef="application"></sequenceFlow>
+    <userTask id="application" name="提交申请" activiti:assignee="${apply}"></userTask>
+    <sequenceFlow id="_10" sourceRef="application" targetRef="approve"></sequenceFlow>
+	<userTask id="approve" name="经理审批" activiti:assignee="${approve}"></userTask>
+	<sequenceFlow id="_6" sourceRef="approve" targetRef="_5"></sequenceFlow>
+	 <exclusiveGateway id="_5" name="ExclusiveGateway"></exclusiveGateway>
+	 
+	<sequenceFlow id="_7" name="通过" sourceRef="_5" targetRef="_3">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${pass}]]></conditionExpression>
+    </sequenceFlow>
+	
+	 <sequenceFlow id="_12" name="不通过" sourceRef="_5" targetRef="application">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!pass}]]></conditionExpression>
+    </sequenceFlow>
+	<endEvent id="_3" name="EndEvent"></endEvent>
+	       
+  </process>
+ 
+</definitions>
