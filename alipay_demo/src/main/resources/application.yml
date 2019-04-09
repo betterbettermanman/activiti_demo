@@ -1,0 +1,10 @@
+pay:
+  wxpay:
+    appID: xxx
+    mchID: xxx
+    key: xxx
+    sandboxKey: xxx
+    certPath: /var/local/cert/apiclient_cert.p12
+    useSandbox: false
+server:
+  port: 9000
